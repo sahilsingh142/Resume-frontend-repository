@@ -158,7 +158,7 @@ function Home() {
                     </div>
                 </div>
             </div>
-            
+
             {/*Last Section */}
             <div className="w-full h-screen bg-black text-white flex justify-center items-center">
                 <div className="w-full h-[55%] bg-linear-to-r from-neutral-950 to-neutral-900 flex flex-col justify-center">
@@ -166,10 +166,15 @@ function Home() {
                     <p className="font-mono font-medium ml-15 text-sm w-[80%] mt-8">FutureCv is a 100% free platform for building and generating beautiful resumes, online. Supported by the sharing, it is a way to fullfil our mission of creating career development tools, for everyone.</p>
                 </div>
             </div>
-            
+
             {/*Last Mini Section */}
-            <div className="w-full h-85 bg-black">
-                            
+            <div className="w-full h-85 bg-black text-white flex items-end border-t border-neutral-400">
+                <div className="ml-15 mb-5">
+                    <h1 className="text-3xl font-medium text-neutral-300">Future Cv</h1>
+                    <p className="text-neutral-500 font-mono w-[40%] mt-5">Use the latest generation resume builder and other career development tools, based on AI, available for anyone.</p>
+                    <p className="text-neutral-500 mt-10 text-sm">Build by <span className="border-b">Sahil Singh</span></p>
+                    <p className="text-neutral-500 mt-5 text-sm">© Copyright 2025 Future.com</p>
+                </div>
             </div>
         </>
     )
