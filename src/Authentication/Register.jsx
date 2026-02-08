@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function Register() {
@@ -8,6 +9,7 @@ function Register() {
         password: ""
     });
 
+    const navigate = useNavigate();
     const handleSignupData = (e) => {
        setSignUpFrom({ ...signUpFrom, [e.target.name]:e.target.value});
     }
@@ -17,6 +19,9 @@ function Register() {
         try {
             const res = await axios.post("http://localhost:3500/signup", signUpFrom);
             alert(res.data.message || "Signup Successful");
+            setTimeout(()=>{
+                navigate('/LoginPage');
+            },1000)
         }
         catch (err) {
             alert(err.response?.data?.message || "Signup Failed");
