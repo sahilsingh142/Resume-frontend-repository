@@ -21,7 +21,7 @@ function Register() {
             alert(res.data.message || "Signup Successful");
             setTimeout(()=>{
                 navigate('/LoginPage');
-            },1000)
+            },500)
         }
         catch (err) {
             alert(err.response?.data?.message || "Signup Failed");

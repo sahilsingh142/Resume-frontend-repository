@@ -94,7 +94,9 @@ function Home() {
                                 <Link to="/FirstTemp" className="bg-white text-black py-3 md:py-2.5 rounded-xl font-medium hover:scale-95 duration-300 cursor-pointer hover:bg-neutral-200 text-xl text-center">
                                     Create Resume Now
                                 </Link>
-                                <button className="border-b border-white font-medium hidden md:flex justify-center text-xl cursor-pointer hover:text-2xl hover:border-neutral-300 hover:text-neutral-200 duration-300  ">Choose Tamplate</button>
+                                <Link to="/AllTemp" className="border-b border-white font-medium hidden md:flex justify-center text-xl cursor-pointer hover:text-2xl hover:border-neutral-300 hover:text-neutral-200 duration-300  ">
+                                    Choose Tamplate
+                                </Link>
                             </div>
                         </div>
 
