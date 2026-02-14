@@ -66,7 +66,7 @@ const Fillinformation = () => {
                 <h1 className="text-3xl font-mono font-bold mt-5 ml-2">Information</h1>
                 <div className="h-[30%] grid grid-cols-1 md:grid-cols-2 mt-2">
 
-                    <div className="flex flex-col m-4">
+                    <div className="flex flex-col m-3">
                         <span className="text-sm font-medium ml-3">Full Name</span>
                         <input
                             className="border px-4 py-3 rounded-xl "
@@ -76,7 +76,7 @@ const Fillinformation = () => {
                             placeholder="Atul Singh"
                         />
                     </div>
-                    <div className="flex flex-col m-4">
+                    <div className="flex flex-col m-3">
                         <span className="text-sm font-medium ml-3">Proffesion</span>
                         <input
                             className="border px-4 py-3 rounded-xl "
@@ -86,7 +86,7 @@ const Fillinformation = () => {
                             placeholder="Web Developer"
                         />
                     </div>
-                    <div className="flex flex-col m-4">
+                    <div className="flex flex-col m-3">
                         <span className="text-sm font-medium ml-3">Phone No</span>
                         <input
                             className="border px-4 py-3 rounded-xl"
@@ -96,7 +96,7 @@ const Fillinformation = () => {
                             placeholder="444-555-666"
                         />
                     </div>
-                    <div className="flex flex-col m-4">
+                    <div className="flex flex-col m-3">
                         <span className="text-sm font-medium ml-3">Email</span>
                         <input
                             className="border px-4 py-3 rounded-xl "
@@ -106,7 +106,7 @@ const Fillinformation = () => {
                             placeholder="email@gmail.com"
                         />
                     </div>
-                    <div className="flex flex-col m-4">
+                    <div className="flex flex-col m-3">
                         <span className="text-sm font-medium ml-3">City</span>
                         <input
                             className="border px-4 py-3 rounded-xl "
@@ -116,7 +116,7 @@ const Fillinformation = () => {
                             placeholder="Delhi"
                         />
                     </div>
-                    <div className="flex flex-col  m-4">
+                    <div className="flex flex-col  m-3">
                         <span className="text-sm font-medium ml-3">GitHub</span>
                         <input
                             className="border px-4 py-3 rounded-xl"
@@ -129,7 +129,7 @@ const Fillinformation = () => {
                 </div>
 
                 {/* Skill */}
-                <h1 className="font-mono text-3xl font-bold mt-20 md:mt-30 ml-2">Skill</h1>
+                <h1 className="font-mono text-3xl font-bold mt-20 md:mt-20 ml-2">Skill</h1>
                 <div>
                     <input className="border px-6 py-3 rounded-xl mt-3 ml-3"
                         type="text"
@@ -145,7 +145,7 @@ const Fillinformation = () => {
                 </div>
 
                 {/* Language */}
-                <h1 className="font-mono text-3xl font-bold mt-15 ml-2">Language</h1>
+                <h1 className="font-mono text-3xl font-bold mt-10 ml-2">Language</h1>
                 <div>
                     <input className="border px-6 py-3 rounded-xl mt-3 ml-3"
                         value={languageInput}
@@ -157,7 +157,7 @@ const Fillinformation = () => {
                 </div>
 
                 {/* Summery scetion */}
-                <h1 className="font-mono text-3xl font-bold mt-15 ml-2">Summary</h1>
+                <h1 className="font-mono text-3xl font-bold mt-10 ml-2">Summary</h1>
                 <div
                     ref={showRef}
                     contentEditable

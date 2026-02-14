@@ -4,6 +4,7 @@ import FirstTemp from './Template/FirstTemp';
 import Login from './Authentication/Login';
 import Register from './Authentication/Register';
 import AllTemp from './Template/AllTemp';
+import SecandTemp from './Template/SecandTemp';
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/FirstTemp' element={<FirstTemp/>} />
+        <Route path='/SecandTemp' element={<SecandTemp/>}/>
         <Route path='/AllTemp' element={<AllTemp/>}/>
         <Route path='RegisterPage' element={<Register/>}/>
         <Route path='/LoginPage' element={<Login/>}/>

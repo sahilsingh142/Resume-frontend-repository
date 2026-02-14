@@ -91,7 +91,7 @@ function Home() {
                                 <p className="mt-8 ">Create professional resumes quickly with our easy resume builder. Choose modern templates, customize details, and download instantly to stand out and apply confidently for your dream job</p>
                             </div>
                             <div className=" mt-15 grid grid-cols-1 md:grid-cols-2 flex-wrap gap-10">
-                                <Link to="/FirstTemp" className="bg-white text-black py-3 md:py-2.5 rounded-xl font-medium hover:scale-95 duration-300 cursor-pointer hover:bg-neutral-200 text-xl text-center">
+                                <Link to="/SecandTemp" className="bg-white text-black py-3 md:py-2.5 rounded-xl font-medium hover:scale-95 duration-300 cursor-pointer hover:bg-neutral-200 text-xl text-center">
                                     Create Resume Now
                                 </Link>
                                 <Link to="/AllTemp" className="border-b border-white font-medium hidden md:flex justify-center text-xl cursor-pointer hover:text-2xl hover:border-neutral-300 hover:text-neutral-200 duration-300  ">
