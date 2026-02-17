@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateFild, skill, language, summary, companyDescription, updateExp, updateCollage, projects} from "../handleSlice";
+import { updateFild, skill, language, summary, companyDescription, updateExp, updateCollage, projects } from "../handleSlice";
 
 const Fillinformation = () => {
     const [input, setInput] = useState("");
@@ -47,9 +47,9 @@ const Fillinformation = () => {
         if (!projectName && !projectStartEndDate && !projectDescription) return;
 
         const addProject = {
-           projectName: projectName,
+            projectName: projectName,
             projectStartEndDate: projectStartEndDate,
-           projectDescription: projectDescription
+            projectDescription: projectDescription
         }
 
         dispatch(projects(addProject));
@@ -58,6 +58,18 @@ const Fillinformation = () => {
         setProjectStateEndDate("");
         editorProjectRef.current.innerText = "";
     }
+
+    const handleSaveSubmit = async () => {
+        try {
+            const res = await axios.post(
+                "http://localhost:5000/api/resume",resume
+            );
+            alert("Resume Saved Successfully");
+        } catch (error) {
+            alert("Error saving resume");
+        }
+    };
+
     return (
         <>
             {/* Filling Information */}
@@ -325,6 +337,11 @@ const Fillinformation = () => {
                             </div>
                         </div>
                     </div>
+                </div>
+                <div className="flex justify-center ">
+                    <button className="px-30 py-4 mt-10 mb-5 cursor-pointer  bg-neutral-300 text-black text-xl font-medium rounded-lg hover:bg-neutral-500 hover:scale-105 hover:text-white transition duration-300"
+                        onClick={handleSaveSubmit}
+                    >Save Resume</button>
                 </div>
             </div>
         </>

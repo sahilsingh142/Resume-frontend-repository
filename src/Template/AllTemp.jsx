@@ -1,6 +1,6 @@
 import firstTemp from './All-Images/first tamplate.png';
-import secandTemp from './All-Images/secand tamplate.png';
-import thirdTemp from './All-Images/third tamplate.png';
+// import secandTemp from './All-Images/secand tamplate.png';
+// import thirdTemp from './All-Images/third tamplate.png';
 const AllTemp = () => {
   return (
     <>

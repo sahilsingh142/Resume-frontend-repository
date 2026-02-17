@@ -6,103 +6,155 @@ const FirstTemp = () => {
     return (
         <>
             <div className="w-full h-screen bg-black">
-                <div className="px-2 py-2 h-full grid grid-cols-1 md:grid-cols-2 items-center text-white">
-                    <Fillinformation/>
-                    <div className="w-full h-full bg-black hidden md:flex">
-                        {/* Resume Page */}
-                        <div className="w-[90%] bg-white shadow-2xl grid grid-cols-1 md:grid-cols-3 mt-10">
-                            <aside className="bg-neutral-900 text-white p-8">
-                                <h1 className={`text-2xl font-bold ${resume.name ? "text-white" : "text-neutral-400"}`}>{resume.name || "Rohan Kapur"}</h1>
-                                <p className={`text-sm text-neutral-300 mt-1 ${resume.proffession ? "text-white" : "text-neutral-400"} `}>{resume.proffession || "Developer"}</p>
+                <div className="px-2 py-2 h-full grid grid-cols-1 md:grid-cols-2 items-center text-white overflow-hidden">
+                    <Fillinformation />
 
-                                <div className="mt-8">
-                                    <h2 className="text-lg font-semibold border-b border-neutral-700 pb-1">Contact</h2>
-                                    <ul className="text-sm mt-3 space-y-2">
-                                        <li className={`${resume.email ? "text-white" : "text-neutral-400"}`}>{resume.email || "email@gmail.com"}</li>
-                                        <li className={`${resume.phone ? "text-white" : "text-neutral-400"}`}>{resume.phone || "555-666-333"}</li>
-                                        <li className={`${resume.country ? "text-white" : "text-neutral-400"}`}>{resume.country || "India"}</li>
-                                        <li className={`${resume.github ? "text-white" : "text-neutral-400"}`}> {resume.github || "github"}</li>
-                                    </ul>
+                    {/* Second Template */}
+                    <div className="w-full h-full hidden md:flex justify-center bg-gray-100 shadow-sm shadow-neutral-300">
+                        <main className="w-full h-full max-w-4xl bg-white p-2 font-sans text-black rounded-xl ">
+
+                            {/* Header */}
+                            <header className="text-center sm:text-left border-l-2 pl-3">
+                                <h1 className={`text-2xl sm:text-3xl font-bold ${resume.name ? "text-black" : "text-gray-400"}`}>
+                                    {resume.name || "Meet Matlabi"}
+                                </h1>
+
+                                <p className={`text-sm sm:text-base mt-1 ${resume.proffession ? "text-black" : "text-gray-400"}`}>
+                                    {resume.proffession || "Frontend Developer"}
+                                </p>
+
+                                <p className="text-xs sm:text-sm mt-1 leading-relaxed flex gap-3">
+                                    <span className={resume.email ? "text-black" : "text-gray-400"}>
+                                        {resume.email || "meet@email.com"}
+                                    </span>
+                                    <br className="sm:hidden" />
+                                    <span className={resume.phone ? "text-black" : "text-gray-400"}>
+                                        {resume.phone || "+91-XXXXXXXXXX"}
+                                    </span>
+                                    <br className="sm:hidden" />
+                                    <span className={resume.github ? "text-black" : "text-gray-400"}>
+                                        {resume.github || "github.com/meet"}
+                                    </span>
+                                    <span className={resume.country ? "text-black" : "text-gray-400"}>
+                                        {resume.country || "India"}
+                                    </span>
+                                </p>
+                            </header>
+
+                            {/* Summary */}
+                            <section className="mt-2">
+                                <div className="flex justify-center border-b">
+                                    <h2 className="text-base sm:text-lg font-semibold  border-black">
+                                        Professional Summary
+                                    </h2>
+                                </div>
+                                <p className={`text-sm leading-relaxed mt-2 ${resume.summary ? "text-black" : "text-gray-400"}`}>
+                                    {resume.summary ||
+                                        "Passionate Frontend Web Developer with hands-on experience in building responsive and modern web applications using React and Tailwind CSS. Strong focus on clean UI, performance, and user experience Passionate Frontend Web Developer with hands-on experience in building responsive and modern web applications using React and Tailwind CSS. Strong focus on clean UI, performance, and user experience"}
+                                </p>
+                            </section>
+
+                            {/* Skills */}
+                            <section className="mt-3">
+                                <div className="flex justify-center border-b">
+                                    <h2 className="text-base sm:text-lg font-semibold border-black">
+                                        Skills
+                                    </h2>
                                 </div>
 
-                                <div className="mt-8">
-                                    <h2 className="text-lg font-semibold border-b border-neutral-700 pb-1">Skills</h2>
-                                    <ul className="text-sm mt-3 space-y-1">
-                                        {resume.skill.map((item, index) => (
-                                            <li key={index}>{item.input}</li>
-                                        ))}
-                                    </ul>
+                                <ul className="grid grid-cols-2 sm:grid-cols-3 gap-y-1 text-sm list-disc list-inside">
+                                    {resume.skill?.map((item, index) => (
+                                        <li key={index}>{item.input}</li>
+                                    ))}
+                                </ul>
+                            </section>
+
+                            {/* Languages */}
+                            <section className="mt-3">
+                                <div className="flex justify-center border-b">
+                                    <h2 className="text-base sm:text-lg font-semibold border-black">
+                                        Language
+                                    </h2>
                                 </div>
 
-                                <div className="mt-8">
-                                    <h2 className="text-lg font-semibold border-b border-neutral-700 pb-1">Languages</h2>
-                                    <ul className="text-sm mt-3 space-y-1">
-                                        {resume.language.map((items, index) => (
-                                            <li key={index}>{items.languageInput}</li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            </aside>
+                                <ul className="list-disc list-inside text-sm">
+                                    {resume.language?.map((item, index) => (
+                                        <li key={index}>{item.languageInput}</li>
+                                    ))}
+                                </ul>
+                            </section>
 
-                            {/* Main Content */}
-                            <main className="md:col-span-2 p-10">
-                                {/* Summary */}
-                                <section>
-                                    <h2 className="text-2xl font-bold border-b pb-2 text-black">Professional Summary</h2>
-                                    <p className={`text-sm mt-2 leading-relaxed overflow-hidden ${resume.summary ? "text-black" : "text-neutral-400"}`}>
-                                        {resume.summary || "Passionate Frontend Web Developer with hands-on experience in building responsive and modern web applications using React and Tailwind CSS. Strong focus on clean UI, performance, and user experience."}
+                            {/* Experience */}
+                            <section className="mt-3">
+                                <div className="flex justify-center border-b">
+                                    <h2 className="text-base sm:text-lg font-semibold border-black">
+                                        Experience
+                                    </h2>
+                                </div>
+
+                                <div className="space-y-2">
+                                    <h3 className={`text-sm sm:text-base font-semibold ${resume.jobTittle ? "text-black" : "text-gray-400"}`}>
+                                        {resume.jobTittle || "Frontend Developer"}
+                                    </h3>
+
+                                    <p className={`text-xs sm:text-sm ${resume.companyName ? "text-gray-700" : "text-gray-400"}`}>
+                                        {resume.companyName || "Flipkart"} | {resume.startEndDate || "2024 – Present"}
                                     </p>
-                                </section>
 
-                                {/* Experience */}
-                                <section className="mt-8">
-                                    <h2 className="text-2xl font-bold border-b pb-2 text-black">Experience</h2>
-                                    <div className="text-black">
-                                        <div className="flex justify-between">
-                                            <h1 className={`font-semibold text-xl tracking-wide ${resume.companyName ? "text-black" : "text-neutral-400"}`}>{resume.companyName || 'Microsoft'}</h1>
-                                            <h2 className={`font-medium text-sm ${resume.jobTittle ? "text-black" : "text-neutral-400"}`}>{resume.jobTittle || "Frontend Developer"}</h2>
-                                        </div>
-                                        <div className="flex justify-between">
-                                            <p className={`text-sm ${resume.startEndDate ? "text-black" : "text-neutral-400"}`}>{resume.startEndDate || "feb 24 - jan 25"}</p>
-                                            <p className={`text-sm ${resume.location ? "text-black" : "text-neutral-400"}`}>{resume.location || 'Delhi'}</p>
-                                        </div>
+                                    <p className={`text-sm ${resume.companyDescription ? "text-black" : "text-gray-400"}`}>
+                                        {resume.companyDescription ||
+                                            "Worked on building scalable UI components and improving performance is a technology company that makes computer software and digital tools. It helps people and businesses work."}
+                                    </p>
+                                </div>
+                            </section>
 
-                                        <p className={`text-sm mt-3 ${resume.companyDescription ? 'text-black' : 'text-neutral-400'}`}>{resume.companyDescription || "Microsoft is a technology company that makes computer software and digital tools. It helps people and businesses work."}</p>
+                            {/* Projects */}
+                            <section className="mt-3">
+                                <div className="flex justify-center border-b">
+                                    <h2 className="text-base sm:text-lg font-semibold border-black">
+                                        Projects
+                                    </h2>
+                                </div>
+
+                                {resume.projects?.map((project, index) => (
+                                    <div key={index} className="space-y-1 mt-2">
+                                        <h3 className={`text-sm sm:text-base font-semibold ${project.projectName ? "text-black" : "text-gray-400"}`}>
+                                            {project.projectName || "Project Name"}
+                                        </h3>
+
+                                        <p className={`text-xs sm:text-sm ${project.projectStartEndDate ? "text-gray-700" : "text-gray-400"}`}>
+                                            {project.projectStartEndDate || "Jan – Mar"}
+                                        </p>
+
+                                        <p className={`text-sm ${project.projectDescription ? "text-black" : "text-gray-400"}`}>
+                                            {project.projectDescription ||
+                                                "Built a modern web application using React and Tailwind CSS."}
+                                        </p>
                                     </div>
-                                </section>
+                                ))}
+                            </section>
 
-                                {/* Projects */}
-                                <section className="mt-8">
-                                    <h2 className="text-2xl font-bold border-b pb-2 text-black">Projects</h2>
-                                    {resume.projects?.map((project, index) => (
-                                        <div key={index} className="mt-1">
-                                            <div className="flex justify-between">
-                                                <h2 className={`font-semibold text-xl text-black ${project.projectName ? 'text-black' : 'text-neutral-400'}`}>{project.projectName || "Music Player"}</h2>
-                                                <p className={`text-black text-sm mt-1 ${project.projectStartEndDate ? 'text-black' : 'text-neutral-400'}`}>{project.projectStartEndDate || 'Jan 12 - Marh 30'}</p>
-                                            </div>
-                                            <p className={`text-sm mt-1 ${project.projectDescription ? 'text-black' : 'text-neutral-400'}`}>
-                                                {project.projectDescription || 'Built a dynamic resume builder using React and Tailwind CSS with live preview and reusable templates.'}
-                                            </p>
-                                        </div>
-                                    ))
-                                    }
-                                </section>
+                            {/* Education */}
+                            <section>
+                                <div className="flex justify-center border-b">
+                                    <h2 className="text-base sm:text-lg font-semibold border-black mt-2">
+                                        Education
+                                    </h2>
+                                </div>
 
-                                {/* Education */}
-                                <section className="mt-8 text-black">
-                                    <h2 className="text-2xl font-bold border-b pb-2 text-black">Education</h2>
-                                    <h1 className={`font-medium mt-2 ${resume.collageName ? 'text-black' : 'text-neutral-400'}`}>{resume.collageName || "Computer Science Engineering Collage"}</h1>
-                                    <h2 className={`text-sm font-medium mt-1 ${resume.dgree ? 'text-black' : 'text-neutral-400'}`}>{resume.dgree || "Computer Science"}</h2>
-                                    <div className="flex justify-between text-sm mt-1">
-                                        <p className={`${resume.endDate ? 'text-black' : 'text-neutral-400'}`}>{resume.endDate || "Jun 2026"}</p>
-                                        <p className={`${resume.collageLocation ? 'text-black' : 'text-neutral-400'}`}>{resume.collageLocation || "Delhi"}</p>
-                                    </div>
-                                </section>
-                            </main>
-                        </div>
+                                <p className={`text-sm font-medium ${resume.dgree ? "text-black" : "text-gray-400"}`}>
+                                    {resume.dgree || "Bachelor’s Degree in Computer Science"}
+                                </p>
+
+                                <p className={`text-xs sm:text-sm ${resume.collageName ? "text-gray-700" : "text-gray-400"}`}>
+                                    {resume.collageName || "University Name"} | {resume.endDate || "2021 – 2024"}
+                                </p>
+                            </section>
+
+                        </main>
                     </div>
                 </div>
-            </div >
+            </div>
         </>
     )
 }

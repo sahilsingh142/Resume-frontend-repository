@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { Link } from "react-router";
 import mainImage from "./image/main.png"
+import firstTemp from '../Template/All-Images/first tamplate.png';
 
 function Home() {
     const imgRef = useRef(null);
@@ -153,12 +154,31 @@ function Home() {
                     <p className="w-[74%] mt-3 font-mono">Explore some of the templates available in FutureCv and view the resumes generated with them. You can customize absolutely everything for your CV - the sections, number rows and columns, number of pages and even the colors.</p>
                 </div>
 
-                <div className="relative w-full h-screen">
+                <div className="relative w-full h-screen overflow-hidden">
                     <div className="absolute inset-0 bg-linear-to-r from-black/96 via-black/40 to-transparent z-10"></div>
-                    <div className="relative w-full h-full bg-neutral-300 z-0">
-                        {/* content */}
+                    <div className="absolute inset-0 flex items-center gap-5 animate-slide">
+
+                        <img
+                            src={firstTemp}
+                            alt="Template"
+                            className="w-100 h-[70%] object-cover rounded-xl"
+                        />
+
+                        <img
+                            src={firstTemp}
+                            alt="Template"
+                            className="w-100 h-[70%] object-cover rounded-xl"
+                        />
+
+                        <img
+                            src={firstTemp}
+                            alt="Template"
+                            className="w-100 h-[70%] object-cover rounded-xl"
+                        />
+
                     </div>
                 </div>
+
             </div>
 
             {/*Last Section */}

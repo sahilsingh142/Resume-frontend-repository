@@ -11,13 +11,13 @@ const SecandTemp = () => {
           <Fillinformation />
 
           {/* Second Template */}
-          <div className="w-full h-full hidden md:flex justify-center bg-gray-100 shadow-sm shadow-neutral-300">
+          <div className="w-full h-full hidden md:flex justify-center bg-gray-100 shadow-sm shadow-neutral-300 mt-15">
             <main className="w-full h-full max-w-4xl bg-white p-2 font-sans text-black rounded-xl">
 
               {/* Header */}
               <header className="text-center sm:text-left">
                 <h1 className={`text-2xl sm:text-3xl font-bold ${resume.name ? "text-black" : "text-gray-400"}`}>
-                  {resume.name || "Meet Matlabi"}
+                  {resume.name || "Anurag Verma"}
                 </h1>
 
                 <p className={`text-sm sm:text-base mt-1 ${resume.proffession ? "text-black" : "text-gray-400"}`}>
