@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+    _id: null,
     name: "",
     proffesion: "",
     phone: "",
@@ -31,6 +32,7 @@ const handleSlice = createSlice({
     name: "resume",
     initialState,
     reducers: {
+         
 
         updateFild: (state, action) => {
             const { field, value } = action.payload;

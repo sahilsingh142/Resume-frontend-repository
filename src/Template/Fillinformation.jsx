@@ -1,15 +1,18 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateFild, skill, language, summary, companyDescription, updateExp, updateCollage, projects } from "../handleSlice";
+import axios from 'axios';
 
 const Fillinformation = () => {
     const [input, setInput] = useState("");
     const [languageInput, setlanguageInput] = useState("");
     const [projectName, setProjectName] = useState('');
     const [projectStartEndDate, setProjectStateEndDate] = useState('');
-    const [projectDescription, setProjectDescription] = useState(null);
+    const [projectDescription, setProjectDescription] = useState("");
+    const [saveId,setSaveId] = useState("");
 
-    const resume = useSelector((state) => state.resume)
+    const resume = useSelector((state) => state.resume);
+    const resumeId = useSelector((state) => state.resume._id);
     const dispatch = useDispatch();
 
     //Skill
@@ -32,11 +35,13 @@ const Fillinformation = () => {
         dispatch(summary(showRef.current.innerText));
     }
 
+    //Company
     const editorRef = useRef(null);
     const handleCompanyExprience = (e) => {
         dispatch(companyDescription(editorRef.current.innerText))
     }
 
+    //Projects
     const editorProjectRef = useRef(null);
     const handleProjectdetail = (e) => {
         setProjectDescription(editorProjectRef.current.innerText);
@@ -61,12 +66,46 @@ const Fillinformation = () => {
 
     const handleSaveSubmit = async () => {
         try {
+            const { _id, ...resumeData } = resume;
             const res = await axios.post(
-                "http://localhost:5000/api/resume",resume
+                "http://localhost:3500/resumeData",
+                resumeData
             );
-            alert("Resume Saved Successfully");
+            setSaveId(res.data.data._id);
+            console.log("ID:", res.data.data._id);
+
+            alert("Resume Saved Successfully ✅");
         } catch (error) {
-            alert("Error saving resume");
+            console.log(error.response?.data);
+            alert("Error saving resume ❌");
+        }
+    };
+
+    const handleDownloadSubmit = async (id) => {
+
+        try {
+            const response = await axios.get(
+                `http://localhost:3500/download/${id}`,
+                { responseType: "blob" }
+            );
+            console.log(saveId)
+            const url = window.URL.createObjectURL(
+                new Blob([response.data], { type: "application/pdf" })
+            );
+
+            const link = document.createElement("a");
+            link.href = url;
+            link.setAttribute("download", "resume.pdf");
+            document.body.appendChild(link);
+            link.click();
+
+            link.remove();
+            window.URL.revokeObjectURL(url);
+
+            alert("Resume downloaded successfully ✅");
+        } catch (error) {
+            console.error(error);
+            alert("Resume download failed ❌");
         }
     };
 
@@ -86,6 +125,7 @@ const Fillinformation = () => {
                             onChange={(e) => dispatch(updateFild({ field: "name", value: e.target.value }))}
                             type="text"
                             placeholder="Atul Singh"
+                            required
                         />
                     </div>
                     <div className="flex flex-col m-3">
@@ -96,6 +136,7 @@ const Fillinformation = () => {
                             onChange={(e) => dispatch(updateFild({ field: "proffession", value: e.target.value }))}
                             type="text"
                             placeholder="Web Developer"
+                            required
                         />
                     </div>
                     <div className="flex flex-col m-3">
@@ -106,6 +147,7 @@ const Fillinformation = () => {
                             onChange={(e) => dispatch(updateFild({ field: "phone", value: e.target.value }))}
                             type="text"
                             placeholder="444-555-666"
+                            required
                         />
                     </div>
                     <div className="flex flex-col m-3">
@@ -116,6 +158,7 @@ const Fillinformation = () => {
                             onChange={(e) => dispatch(updateFild({ field: "email", value: e.target.value }))}
                             type="text"
                             placeholder="email@gmail.com"
+                            required
                         />
                     </div>
                     <div className="flex flex-col m-3">
@@ -126,6 +169,7 @@ const Fillinformation = () => {
                             onChange={(e) => dispatch(updateFild({ field: "country", value: e.target.value }))}
                             type="text"
                             placeholder="Delhi"
+                            required
                         />
                     </div>
                     <div className="flex flex-col  m-3">
@@ -136,6 +180,7 @@ const Fillinformation = () => {
                             onChange={(e) => dispatch(updateFild({ field: "github", value: e.target.value }))}
                             type="text"
                             placeholder="https://github.com"
+                            required
                         />
                     </div>
                 </div>
@@ -148,6 +193,7 @@ const Fillinformation = () => {
                         value={input}
                         placeholder="Type something..."
                         onChange={(e) => setInput(e.target.value)}
+                        required
                     />
 
                     <button className="px-5 py-1 ml-4 mt-3 cursor-pointer  bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 hover:scale-105 transition duration-300"
@@ -162,6 +208,7 @@ const Fillinformation = () => {
                     <input className="border px-6 py-3 rounded-xl mt-3 ml-3"
                         value={languageInput}
                         onChange={(e) => setlanguageInput(e.target.value)}
+                        required
                         type="text" placeholder="Language" />
 
                     <button className="px-5 py-1 ml-4 mt-3 cursor-pointer  bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 hover:scale-105 transition duration-300"
@@ -189,6 +236,7 @@ const Fillinformation = () => {
                                 type="text"
                                 placeholder="Microsoft"
                                 value={resume.companyName}
+                                required
                                 onChange={(e) => dispatch(updateExp({ field: "companyName", value: e.target.value }))}
                             />
                         </div>
@@ -200,6 +248,7 @@ const Fillinformation = () => {
                                 type="text"
                                 placeholder="Web Developer"
                                 value={resume.jobTittle}
+                                required
                                 onChange={(e) => dispatch(updateExp({ field: "jobTittle", value: e.target.value }))}
                             />
                         </div>
@@ -211,6 +260,7 @@ const Fillinformation = () => {
                                 type="text"
                                 placeholder="Feb 2024 - Dec 2024"
                                 value={resume.startEndDate}
+                                required
                                 onChange={(e) => dispatch(updateExp({ field: "startEndDate", value: e.target.value }))}
                             />
                         </div>
@@ -222,6 +272,7 @@ const Fillinformation = () => {
                                 type="text"
                                 placeholder="Delhi"
                                 value={resume.location}
+                                required
                                 onChange={(e) => dispatch(updateExp({ field: "location", value: e.target.value }))}
                             />
                         </div>
@@ -251,6 +302,7 @@ const Fillinformation = () => {
                                 type="text"
                                 value={projectName}
                                 placeholder="Music player"
+                                required
                                 onChange={(e) => setProjectName(e.target.value)}
                             />
                         </div>
@@ -262,6 +314,7 @@ const Fillinformation = () => {
                                 type="text"
                                 value={projectStartEndDate}
                                 placeholder="Feb 2024 - Marh 2024"
+                                required
                                 onChange={(e) => setProjectStateEndDate(e.target.value)}
                             />
                         </div>
@@ -298,6 +351,7 @@ const Fillinformation = () => {
                                 type="text"
                                 placeholder="University of Colorado"
                                 value={resume.collageName}
+                                required
                                 onChange={(e) => dispatch(updateCollage({ field: "collageName", value: e.target.value }))}
                             />
                         </div>
@@ -309,6 +363,7 @@ const Fillinformation = () => {
                                 type="text"
                                 placeholder="Bachelor of Computer Science"
                                 value={resume.dgree}
+                                required
                                 onChange={(e) => dispatch(updateCollage({ field: "dgree", value: e.target.value }))}
                             />
                         </div>
@@ -321,6 +376,7 @@ const Fillinformation = () => {
                                     type="text"
                                     placeholder="Marh 2024"
                                     value={resume.endDate}
+                                    required
                                     onChange={(e) => dispatch(updateCollage({ field: "endDate", value: e.target.value }))}
                                 />
                             </div>
@@ -332,6 +388,7 @@ const Fillinformation = () => {
                                     type="text"
                                     placeholder="Delhi"
                                     value={resume.collageLocation}
+                                    required
                                     onChange={(e) => dispatch(updateCollage({ field: "collageLocation", value: e.target.value }))}
                                 />
                             </div>
@@ -342,6 +399,11 @@ const Fillinformation = () => {
                     <button className="px-30 py-4 mt-10 mb-5 cursor-pointer  bg-neutral-300 text-black text-xl font-medium rounded-lg hover:bg-neutral-500 hover:scale-105 hover:text-white transition duration-300"
                         onClick={handleSaveSubmit}
                     >Save Resume</button>
+                </div>
+                <div className="flex justify-end ">
+                    <button className="px-10 py-2 mt-3 mr-10 cursor-pointer  bg-emerald-200 text-black text-xl font-medium rounded-lg hover:bg-emerald-300 hover:scale-105 hover:text-white transition duration-300"
+                        onClick={() => handleDownloadSubmit(saveId)}
+                    >Download Resume</button>
                 </div>
             </div>
         </>
