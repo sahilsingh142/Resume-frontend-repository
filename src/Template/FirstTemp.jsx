@@ -16,7 +16,7 @@ const FirstTemp = () => {
                             {/* Header */}
                             <header className="text-center sm:text-left border-l-2 pl-3">
                                 <h1 className={`text-2xl sm:text-3xl font-bold ${resume.name ? "text-black" : "text-gray-400"}`}>
-                                    {resume.name || "Meet Matlabi"}
+                                    {resume.name || "Amit singh"}
                                 </h1>
 
                                 <p className={`text-sm sm:text-base mt-1 ${resume.proffession ? "text-black" : "text-gray-400"}`}>
@@ -25,7 +25,7 @@ const FirstTemp = () => {
 
                                 <p className="text-xs sm:text-sm mt-1 leading-relaxed flex gap-3">
                                     <span className={resume.email ? "text-black" : "text-gray-400"}>
-                                        {resume.email || "meet@email.com"}
+                                        {resume.email || "amit@email.com"}
                                     </span>
                                     <br className="sm:hidden" />
                                     <span className={resume.phone ? "text-black" : "text-gray-400"}>

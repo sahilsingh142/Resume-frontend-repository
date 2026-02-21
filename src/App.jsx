@@ -5,6 +5,7 @@ import Login from './Authentication/Login';
 import Register from './Authentication/Register';
 import AllTemp from './Template/AllTemp';
 import SecandTemp from './Template/SecandTemp';
+import ThirdTemp from './Template/ThirdTemp';
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/FirstTemp' element={<FirstTemp/>} />
         <Route path='/SecandTemp' element={<SecandTemp/>}/>
+        <Route path='/ThirdTemp' element={<ThirdTemp/>}/>
         <Route path='/AllTemp' element={<AllTemp/>}/>
         <Route path='RegisterPage' element={<Register/>}/>
         <Route path='/LoginPage' element={<Login/>}/>

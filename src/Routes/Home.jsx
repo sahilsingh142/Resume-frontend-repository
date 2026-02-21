@@ -1,7 +1,9 @@
 import { useRef } from "react";
 import { Link } from "react-router";
 import mainImage from "./image/main.png"
-import firstTemp from '../Template/All-Images/first tamplate.png';
+import firstTemp from '../Template/All-Images/firstTem.png';
+import secandTemp from '../Template/All-Images/secandTem.png';
+import thirdTemp from '../Template/All-Images/thirdTem.png';
 
 function Home() {
     const imgRef = useRef(null);
@@ -165,13 +167,13 @@ function Home() {
                         />
 
                         <img
-                            src={firstTemp}
+                            src={secandTemp}
                             alt="Template"
                             className="w-100 h-[70%] object-cover rounded-xl"
                         />
 
                         <img
-                            src={firstTemp}
+                            src={thirdTemp}
                             alt="Template"
                             className="w-100 h-[70%] object-cover rounded-xl"
                         />
@@ -182,7 +184,7 @@ function Home() {
             </div>
 
             {/*Last Section */}
-            <div className="w-full h-screen bg-black text-white flex justify-center items-center">
+            <div className="w-full h-screen bg-black text-white mt-15 sm:mt-0 flex justify-center items-center">
                 <div className="w-full h-[55%] bg-linear-to-r from-neutral-950 to-neutral-900 flex flex-col justify-center">
                     <h1 className="text-6xl font-medium ml-15">About FutureCv</h1>
                     <p className="font-mono font-medium ml-15 text-sm w-[80%] mt-8">FutureCv is a 100% free platform for building and generating beautiful resumes, online. Supported by the sharing, it is a way to fullfil our mission of creating career development tools, for everyone.</p>

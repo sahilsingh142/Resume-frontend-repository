@@ -1,7 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateFild, skill, language, summary, companyDescription, updateExp, updateCollage, projects } from "../handleSlice";
 import axios from 'axios';
+import download from "./All-Images/download.png"
 
 const Fillinformation = () => {
     const [input, setInput] = useState("");
@@ -9,7 +10,8 @@ const Fillinformation = () => {
     const [projectName, setProjectName] = useState('');
     const [projectStartEndDate, setProjectStateEndDate] = useState('');
     const [projectDescription, setProjectDescription] = useState("");
-    const [saveId,setSaveId] = useState("");
+    const [saveId, setSaveId] = useState("");
+    const [check, setCheck] = useState(false)
 
     const resume = useSelector((state) => state.resume);
     const resumeId = useSelector((state) => state.resume._id);
@@ -72,7 +74,7 @@ const Fillinformation = () => {
                 resumeData
             );
             setSaveId(res.data.data._id);
-            console.log("ID:", res.data.data._id);
+            setCheck(true);
 
             alert("Resume Saved Successfully ✅");
         } catch (error) {
@@ -108,11 +110,10 @@ const Fillinformation = () => {
             alert("Resume download failed ❌");
         }
     };
-
     return (
         <>
             {/* Filling Information */}
-            <div className="w-full md:w-[85%] md:h-full bg-neutral-950 shadow-sm shadow-neutral-700 overflow-x-auto whitespace-nowrap">
+            <div className="w-full md:w-[85%] h-full bg-neutral-950 shadow-sm shadow-neutral-700 overflow-x-auto whitespace-nowrap">
                 {/*Information */}
                 <h1 className="text-3xl font-mono font-bold mt-5 ml-2">Information</h1>
                 <div className="h-[30%] grid grid-cols-1 md:grid-cols-2 mt-2">
@@ -186,7 +187,7 @@ const Fillinformation = () => {
                 </div>
 
                 {/* Skill */}
-                <h1 className="font-mono text-3xl font-bold mt-20 md:mt-20 ml-2">Skill</h1>
+                <h1 className="font-mono text-3xl font-bold mt-85 md:mt-20 ml-2">Skill</h1>
                 <div>
                     <input className="border px-6 py-3 rounded-xl mt-3 ml-3"
                         type="text"
@@ -395,15 +396,23 @@ const Fillinformation = () => {
                         </div>
                     </div>
                 </div>
-                <div className="flex justify-center ">
-                    <button className="px-30 py-4 mt-10 mb-5 cursor-pointer  bg-neutral-300 text-black text-xl font-medium rounded-lg hover:bg-neutral-500 hover:scale-105 hover:text-white transition duration-300"
-                        onClick={handleSaveSubmit}
-                    >Save Resume</button>
-                </div>
-                <div className="flex justify-end ">
-                    <button className="px-10 py-2 mt-3 mr-10 cursor-pointer  bg-emerald-200 text-black text-xl font-medium rounded-lg hover:bg-emerald-300 hover:scale-105 hover:text-white transition duration-300"
-                        onClick={() => handleDownloadSubmit(saveId)}
-                    >Download Resume</button>
+
+                <div className="grid grid-cols-1 md:grid-cols-2">
+                    <div>
+                        <button className="px-15 py-3 mt-10 mb-5 ml-5 cursor-pointer shadow-sm shadow-neutral-100  bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 hover:scale-105 transition duration-300"
+                            onClick={handleSaveSubmit}
+                        >Save Resume</button>
+                    </div>
+                    {check ? (
+                        <div>
+                            <img
+                                src={download}
+                                alt="download"
+                                className="w-[15%] cursor-pointer hover:scale-110 duration-300 mt-10 ml-10"
+                                onClick={() => handleDownloadSubmit(saveId)}
+                            />
+                        </div>
+                    ) : null}
                 </div>
             </div>
         </>
