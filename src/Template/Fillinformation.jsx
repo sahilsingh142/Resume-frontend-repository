@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateFild, skill, language, summary, companyDescription, updateExp, updateCollage, projects } from "../handleSlice";
+import { updateFild, skill, language, summary, companyDescription, updateExp, updateCollage, projects, selectTem } from "../handleSlice";
 import axios from 'axios';
 import download from "./All-Images/download.png"
 
@@ -14,8 +14,8 @@ const Fillinformation = () => {
     const [check, setCheck] = useState(false)
 
     const resume = useSelector((state) => state.resume);
-    const resumeId = useSelector((state) => state.resume._id);
     const dispatch = useDispatch();
+    const acceptData = useSelector((state) => state.resume.selectTem)
 
     //Skill
     const handleAdd = () => {
@@ -83,11 +83,11 @@ const Fillinformation = () => {
         }
     };
 
-    const handleDownloadSubmit = async (id) => {
+    const handleDownloadSubmit = async (id, template) => {
 
         try {
             const response = await axios.get(
-                `http://localhost:3500/download/${id}`,
+                `http://localhost:3500/download/${id}/${template}`,
                 { responseType: "blob" }
             );
             console.log(saveId)
@@ -97,7 +97,7 @@ const Fillinformation = () => {
 
             const link = document.createElement("a");
             link.href = url;
-            link.setAttribute("download", "resume.pdf");
+            link.setAttribute("download", `resume-${template}.pdf`);
             document.body.appendChild(link);
             link.click();
 
@@ -110,6 +110,7 @@ const Fillinformation = () => {
             alert("Resume download failed ❌");
         }
     };
+
     return (
         <>
             {/* Filling Information */}
@@ -409,7 +410,7 @@ const Fillinformation = () => {
                                 src={download}
                                 alt="download"
                                 className="w-[15%] cursor-pointer hover:scale-110 duration-300 mt-10 ml-10"
-                                onClick={() => handleDownloadSubmit(saveId)}
+                                onClick={() => handleDownloadSubmit(saveId, acceptData)}
                             />
                         </div>
                     ) : null}

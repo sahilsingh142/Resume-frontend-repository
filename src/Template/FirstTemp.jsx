@@ -9,7 +9,6 @@ const FirstTemp = () => {
                 <div className="px-2 py-2 h-full grid grid-cols-1 md:grid-cols-2 items-center text-white overflow-hidden">
                     <Fillinformation />
 
-                    {/* Second Template */}
                     <div className="w-full h-full hidden md:flex justify-center bg-gray-100 shadow-sm shadow-neutral-300">
                         <main className="w-full h-full max-w-4xl bg-white p-2 font-sans text-black rounded-xl ">
 

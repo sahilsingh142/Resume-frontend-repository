@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    _id: null,
     name: "",
     proffesion: "",
     phone: "",
@@ -20,19 +19,21 @@ const initialState = {
     location: "",
     companyDescription: "",
 
-    projects:[],
+    projects: [],
 
-    collageName:"",
-    dgree:"",
-    endDate:"",
-    collageLocation:"",
+    collageName: "",
+    dgree: "",
+    endDate: "",
+    collageLocation: "",
+
+    selectTem: "modern",
 }
 
 const handleSlice = createSlice({
     name: "resume",
     initialState,
     reducers: {
-         
+
 
         updateFild: (state, action) => {
             const { field, value } = action.payload;
@@ -51,22 +52,26 @@ const handleSlice = createSlice({
             state.summary = action.payload;
         },
 
-        updateExp: (state,action) => {
-            const {field,value} = action.payload
+        updateExp: (state, action) => {
+            const { field, value } = action.payload
             state[field] = value;
         },
         companyDescription: (state, action) => {
             state.companyDescription = action.payload;
         },
 
-        projects:(state,action)=>{
+        projects: (state, action) => {
             state.projects.push(action.payload)
         },
 
-        updateCollage:(state,action) =>{
-            const {field,value} = action.payload;
+        updateCollage: (state, action) => {
+            const { field, value } = action.payload;
             state[field] = value;
         },
+
+        selectTem: (state, action) => {
+            state.selectTem = action.payload;
+        }
     }
 })
 
@@ -78,6 +83,7 @@ export const {
     updateExp,
     companyDescription,
     updateCollage,
-    projects} = handleSlice.actions;
+    projects,
+    selectTem } = handleSlice.actions;
 
 export default handleSlice.reducer;

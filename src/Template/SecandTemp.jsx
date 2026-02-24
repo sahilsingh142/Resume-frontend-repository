@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import Fillinformation from "./Fillinformation";
 
+
 const SecandTemp = () => {
   const resume = useSelector((state) => state.resume);
 
